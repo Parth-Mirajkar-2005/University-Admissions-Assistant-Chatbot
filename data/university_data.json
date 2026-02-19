@@ -1,0 +1,189 @@
+{
+  "architecture": {
+    "programs": {
+      "barch": {
+        "name": "Bachelor of Architecture",
+        "duration": "5 Years",
+        "eligibility": [
+          "10+2 with Mathematics",
+          "Valid Architecture Aptitude Test (NATA)"
+        ],
+        "fees": "14 - 15 Lakhs (total)",
+        "entrance_exams": ["NATA"],
+        "career_scope": [
+          "Architect",
+          "Urban Designer",
+          "Interior Designer",
+          "Landscape Architect"
+        ]
+      },
+      "march": {
+        "name": "Master of Architecture",
+        "duration": "2 Years",
+        "eligibility": [
+          "Bachelor of Architecture degree"
+        ],
+        "fees": "2 - 3 Lakhs (total)",
+        "career_scope": [
+          "Sustainable Architecture Consultant",
+          "Design Researcher"
+        ]
+      }
+    }
+  },
+
+  "engineering": {
+    "programs": {
+      "btech": {
+        "name": "Bachelor of Technology",
+        "specializations": [
+          "Computer Science & Engineering",
+          "AI & ML",
+          "Data Science",
+          "Cyber Security",
+          "ECE",
+          "Mechanical",
+          "Civil",
+          "EEE"
+        ],
+        "duration": "4 Years",
+        "eligibility": [
+          "10+2 with Physics & Mathematics",
+          "Entrance exam qualification"
+        ],
+        "fees": "2 - 3 Lakhs per year",
+        "career_scope": [
+          "Software Engineer",
+          "AI Engineer",
+          "Core Engineer",
+          "Researcher"
+        ]
+      },
+      "mtech": {
+        "name": "Master of Technology",
+        "duration": "2 Years",
+        "eligibility": [
+          "B.Tech or equivalent degree"
+        ],
+        "fees": "1 - 1.5 Lakhs per year"
+      }
+    }
+  },
+
+  "humanities": {
+    "programs": {
+      "ba": {
+        "name": "Bachelor of Arts",
+        "specializations": [
+          "Economics",
+          "Psychology",
+          "English",
+          "Political Science"
+        ],
+        "duration": "3 Years",
+        "eligibility": ["10+2 in any stream"],
+        "fees": "1 - 2 Lakhs per year"
+      },
+      "ma": {
+        "name": "Master of Arts",
+        "duration": "2 Years",
+        "eligibility": ["Relevant undergraduate degree"],
+        "fees": "1.5 - 2 Lakhs per year"
+      }
+    }
+  },
+
+  "law": {
+    "programs": {
+      "ba_llb": {
+        "name": "BA LL.B.",
+        "duration": "5 Years",
+        "eligibility": ["10+2 in any stream"],
+        "fees": "2 - 3 Lakhs per year",
+        "career_scope": [
+          "Advocate",
+          "Legal Advisor",
+          "Corporate Lawyer"
+        ]
+      },
+      "llm": {
+        "name": "LL.M.",
+        "duration": "1 Year",
+        "eligibility": ["LL.B. degree"],
+        "fees": "2 Lakhs (total)"
+      }
+    }
+  },
+
+  "management": {
+    "programs": {
+      "bba": {
+        "name": "Bachelor of Business Administration",
+        "duration": "3 Years",
+        "eligibility": ["10+2 in any stream"],
+        "fees": "1.5 - 2 Lakhs per year"
+      },
+      "mba": {
+        "name": "Master of Business Administration",
+        "duration": "2 Years",
+        "eligibility": [
+          "Bachelor’s degree",
+          "Management entrance exam score"
+        ],
+        "fees": "3 - 4 Lakhs per year",
+        "career_scope": [
+          "Business Analyst",
+          "Marketing Manager",
+          "HR Manager"
+        ]
+      }
+    }
+  },
+
+  "pharmacy": {
+    "programs": {
+      "bpharm": {
+        "name": "Bachelor of Pharmacy",
+        "duration": "4 Years",
+        "eligibility": [
+          "10+2 with Physics & Chemistry"
+        ],
+        "fees": "1.5 - 2 Lakhs per year",
+        "career_scope": [
+          "Clinical Pharmacist",
+          "Drug Safety Associate"
+        ]
+      },
+      "mpharm": {
+        "name": "Master of Pharmacy",
+        "duration": "2 Years",
+        "eligibility": ["B.Pharm degree"],
+        "fees": "1 - 1.5 Lakhs per year"
+      }
+    }
+  },
+
+  "science": {
+    "programs": {
+      "bsc": {
+        "name": "Bachelor of Science",
+        "specializations": [
+          "Physics",
+          "Chemistry",
+          "Mathematics",
+          "Biotechnology",
+          "Data Science"
+        ],
+        "duration": "3 Years",
+        "eligibility": ["10+2 with science subjects"],
+        "fees": "1 - 2 Lakhs per year"
+      },
+      "msc": {
+        "name": "Master of Science",
+        "duration": "2 Years",
+        "eligibility": ["Relevant undergraduate degree"],
+        "fees": "1.5 - 2 Lakhs per year"
+      }
+    }
+  }
+}

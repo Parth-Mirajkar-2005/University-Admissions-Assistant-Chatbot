@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scaledown University — Admissions Assistant</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <div class="chat-app">
+    <!-- HEADER -->
+    <header class="chat-header">
+      <div class="header-content">
+        <div class="header-icon">🎓</div>
+        <div class="header-text">
+          <div class="title">Scaledown University</div>
+          <div class="subtitle">
+            <span class="status-dot"></span>
+            AI-powered · Always available
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CHAT AREA -->
+    <main id="chat-box" class="chat-box">
+      <!-- Welcome card -->
+      <div class="welcome-card">
+        <div class="welcome-icon">🎓</div>
+        <h2>Welcome to Scaledown University!</h2>
+        <p>I'm your AI-powered admissions assistant. Ask me anything about our programs, eligibility, fees,
+          entrance exams, specializations, or career scope.</p>
+      </div>
+
+      <!-- Quick suggestion chips -->
+      <div class="suggestions" id="suggestions">
+        <button class="chip" onclick="sendSuggestion(this)">What programs do you offer?</button>
+        <button class="chip" onclick="sendSuggestion(this)">Tell me about B.Tech</button>
+        <button class="chip" onclick="sendSuggestion(this)">MBA eligibility</button>
+        <button class="chip" onclick="sendSuggestion(this)">Architecture fees</button>
+      </div>
+    </main>
+
+    <!-- INPUT -->
+    <footer class="chat-input-area">
+      <div class="input-wrapper">
+        <input id="user-input" type="text" placeholder="Ask about programs, fees, eligibility…" aria-label="Chat input"
+          autocomplete="off" />
+        <button id="send-btn" onclick="sendMessage()" aria-label="Send">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="input-footer">Powered by Groq API · Responses are based on university data only</div>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const chatBox = document.getElementById("chat-box");
+    const input = document.getElementById("user-input");
+    const sendBtn = document.getElementById("send-btn");
+    const suggestions = document.getElementById("suggestions");
+    let firstMessage = true;
+
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    function sendSuggestion(el) {
+      input.value = el.textContent;
+      sendMessage();
+    }
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      // Hide welcome card and suggestions on first message
+      if (firstMessage) {
+        const welcome = document.querySelector(".welcome-card");
+        if (welcome) welcome.style.display = "none";
+        if (suggestions) suggestions.style.display = "none";
+        firstMessage = false;
+      }
+
+      addMessage(text, "user");
+      input.value = "";
+      input.disabled = true;
+      sendBtn.disabled = true;
+
+      showTyping();
+
+      fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Server error");
+          return res.json();
+        })
+        .then((data) => {
+          removeTyping();
+          addMessage(data.reply, "bot");
+        })
+        .catch(() => {
+          removeTyping();
+          addMessage("Sorry, I'm having trouble connecting right now. Please try again in a moment.", "bot");
+        })
+        .finally(() => {
+          input.disabled = false;
+          sendBtn.disabled = false;
+          input.focus();
+        });
+    }
+
+    function addMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.className = `message ${sender}`;
+
+      const avatar = document.createElement("div");
+      avatar.className = "avatar";
+      avatar.textContent = sender === "bot" ? "🎓" : "";
+
+      const content = document.createElement("div");
+      content.className = "msg-content";
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+
+      // Convert markdown-style formatting to HTML
+      let html = text
+        .replace(/\n/g, "<br>")
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\*(.*?)\*/g, "<em>$1</em>");
+      bubble.innerHTML = html;
+
+      const time = document.createElement("div");
+      time.className = "msg-time";
+      time.textContent = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+      content.appendChild(bubble);
+      content.appendChild(time);
+
+      if (sender === "bot") {
+        msg.appendChild(avatar);
+        msg.appendChild(content);
+      } else {
+        msg.appendChild(content);
+      }
+
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showTyping() {
+      const typing = document.createElement("div");
+      typing.className = "message bot typing";
+      typing.id = "typing-indicator";
+      typing.innerHTML = `
+        <div class="avatar">🎓</div>
+        <div class="msg-content">
+          <div class="bubble typing-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>`;
+      chatBox.appendChild(typing);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function removeTyping() {
+      const typing = document.getElementById("typing-indicator");
+      if (typing) typing.remove();
+    }
+  </script>
+</body>
+
+</html>
