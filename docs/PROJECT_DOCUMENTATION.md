@@ -217,7 +217,7 @@ Responsive design is implemented using CSS media queries.
 
 ```bash
 # Clone the repository
-git clone https://github.com/itsrajarshi/university-admissions-bot.git
+git clone https://github.com/Parth-Mirajkar-2005/University-Admissions-Assistant-Chatbot.git
 cd university-admissions-bot
 
 # (Recommended) Create a virtual environment
@@ -303,12 +303,4 @@ The University Admissions Assistant Chatbot demonstrates how a well-structured k
 
 By prioritizing accuracy, usability, and extensibility, the project provides a strong foundation for real-world academic information systems.
 
----
 
-## 16. Author
-
-**Rajarshi Ghosh**
-B.Tech – Computer Science and Engineering
-
-GitHub: [github.com/itsrajarshi](https://github.com/itsrajarshi)
-LinkedIn: [linkedin.com/in/itsrajarshi](https://linkedin.com/in/itsrajarshi)

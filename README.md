@@ -68,7 +68,7 @@ Supports programs across **7 university departments**:
 
 ```bash
 # Clone the repository
-git clone https://github.com/itsrajarshi/university-admissions-bot.git
+git clone https://github.com/Parth-Mirajkar-2005/University-Admissions-Assistant-Chatbot.git
 cd university-admissions-bot
 
 # (Recommended) Create a virtual environment
@@ -175,17 +175,3 @@ university-admissions-bot/
 - Context resets on page refresh
 - Requires an active internet connection for API calls
 
----
-
-## License
-
-This project is intended for academic and demonstration use.
-
----
-
-## Author
-
-**Rajarshi Ghosh**
-B.Tech – Computer Science and Engineering
-
-[GitHub](https://github.com/itsrajarshi) · [LinkedIn](https://linkedin.com/in/itsrajarshi)
